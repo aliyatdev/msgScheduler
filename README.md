@@ -142,3 +142,17 @@ En un servidor Linux (Ubuntu/Debian) estándar:
 ## Seguridad
 - `auth_session/`, `data/` y `.env` están configurados en `.gitignore` y **nunca** deben subirse al repositorio.
 - Todos los endpoints en `/api/*` requieren el encabezado `x-api-token` o `Authorization: Bearer <AUTH_TOKEN>`.
+
+---
+
+## Descargo de Responsabilidad (Disclaimer)
+Este proyecto es una herramienta de código abierto desarrollada exclusivamente con fines educativos y de productividad personal/organizacional para respetar horarios laborales.
+
+- **No oficial:** Este proyecto utiliza la librería [Baileys](https://github.com/WhiskeySockets/Baileys) y no está afiliado, respaldado ni asociado de ninguna manera con WhatsApp LLC, Meta Platforms, Inc., o cualquiera de sus filiales o subsidiarias.
+- **Uso responsable:** Esta herramienta **no** fue diseñada ni debe utilizarse para el envío masivo de mensajes no solicitados, spam, campañas de marketing masivo o cualquier actividad que viole los [Términos de Servicio de WhatsApp](https://www.whatsapp.com/legal/terms-of-service). El uso de este software queda bajo la total responsabilidad del usuario.
+
+---
+
+## Licencia
+Distribuido bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más información.
+
