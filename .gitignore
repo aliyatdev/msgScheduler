@@ -1,0 +1,6 @@
+node_modules/
+.env
+auth_session/
+data/
+*.log
+qr.png

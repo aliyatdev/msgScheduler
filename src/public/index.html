@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Scheduler</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="navbar">
+      <div class="brand">
+        <div class="logo-icon">📱</div>
+        <div class="brand-text">
+          <h1>WhatsApp Scheduler</h1>
+          <p class="subtitle">Programador automático de mensajes</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div id="connection-badge" class="badge badge-disconnected">
+          <span class="status-dot"></span>
+          <span id="connection-status-text">Verificando WhatsApp...</span>
+        </div>
+        <button id="token-config-btn" class="btn-secondary" title="Configurar Token">🔑 Token</button>
+      </div>
+    </header>
+
+    <!-- Token Modal -->
+    <div id="token-modal" class="modal hidden">
+      <div class="modal-card">
+        <h3>Clave de Acceso (AUTH_TOKEN)</h3>
+        <p>Ingresa el token de seguridad configurado en el archivo <code>.env</code> para autorizar operaciones.</p>
+        <input type="password" id="token-input" placeholder="Ingresa tu AUTH_TOKEN..." />
+        <div class="modal-actions">
+          <button id="save-token-btn" class="btn-primary">Guardar Token</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Section: Schedule Form -->
+      <section class="card form-card">
+        <h2>🗓️ Programar nuevo mensaje</h2>
+        <form id="schedule-form">
+          <div class="form-group">
+            <label for="contact-input">Número o Contacto WhatsApp</label>
+            <input 
+              type="text" 
+              id="contact-input" 
+              placeholder="Ej. +52 55 1234 5678 o 525512345678" 
+              required 
+            />
+            <small class="helper-text">Acepta formatos locales e internacionales (con o sin signo +).</small>
+          </div>
+
+          <div class="form-group">
+            <label for="message-input">Mensaje</label>
+            <textarea 
+              id="message-input" 
+              rows="4" 
+              placeholder="Escribe el mensaje que deseas programar..." 
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="send-at-input">Fecha y hora de envío</label>
+            <input 
+              type="datetime-local" 
+              id="send-at-input" 
+              required 
+            />
+            <small class="helper-text">Se enviará automáticamente a la hora seleccionada.</small>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn-primary btn-block">
+            Programar Envío
+          </button>
+        </form>
+      </section>
+
+      <!-- Section: Messages List -->
+      <section class="card list-card">
+        <div class="list-header">
+          <h2>📋 Mensajes programados</h2>
+          <div class="filters">
+            <button class="filter-chip active" data-status="">Todos</button>
+            <button class="filter-chip" data-status="pending">Pendientes</button>
+            <button class="filter-chip" data-status="sent">Enviados</button>
+            <button class="filter-chip" data-status="failed">Fallidos</button>
+            <button class="filter-chip" data-status="cancelled">Cancelados</button>
+            <button id="refresh-btn" class="btn-icon" title="Actualizar lista">🔄</button>
+          </div>
+        </div>
+
+        <div id="messages-container" class="messages-container">
+          <div class="loading-state">Cargando mensajes...</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="app.js"></script>
+</body>
+</html>
